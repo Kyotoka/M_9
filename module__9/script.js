@@ -1,19 +1,21 @@
-/*let tableBody = document.querySelector("#post-table tbody");
+// let tableBody = document.querySelector("#post-table tbody");
 
-fetch('https://jsonplaceholder.typicode.com/posts')
-  .then((response)=>response.json())
-  .then((posts)=>{
-  posts.forEach(post => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${post.id}</td>
-      <td>${post.title}</td>
-      <td>${post.body}</td>
-    `;
-    tableBody.appendChild(row);
-  });
-})
-*/
+// fetch('https://jsonplaceholder.typicode.com/posts')
+//   .then((response)=>response.json())
+//   .then((posts)=>{
+//   posts.forEach(post => {
+//     const row = document.createElement("tr");
+//     row.innerHTML = `
+//       <td>${post.id}</td>
+//       <td>${post.title}</td>
+//       <td>${post.body}</td>
+//     `;
+//     tableBody.appendChild(row);
+//   });
+// })
+
+// let tableBody = document.querySelector("#postsTable tbody");
+
 let row = document.querySelector(".row");
 
 const fetchData = async () => {
@@ -22,19 +24,15 @@ const fetchData = async () => {
     const posts = await response.json();
 
     posts.slice(0, 12).forEach((post) => {
-      // let row = document.createElement("tr");
-
       row.innerHTML += `
-        <div class="col-4">
-          <div class="card bg-dark text-white mb-3 border p-3">
+        <div class="col-4 d-flex justify-content-center mb-4">
+          <div class="card border p-3 w-100">
             <h2>${post.id}</h2>
             <p>${post.title}</p>
             <p>${post.body}</p>
           </div>
         </div>
       `;
-
-      // row.appendChild(row);
     });
   } catch (err) {
     console.log(err);
@@ -43,4 +41,3 @@ const fetchData = async () => {
 
 fetchData();
 
-// fetchData();
